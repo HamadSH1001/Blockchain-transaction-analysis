@@ -26,8 +26,8 @@ A project for analyzing blockchain transactions to evaluate the efficiency, secu
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/blockchain-transaction-analysis.git
-    cd blockchain-transaction-analysis
+    git clone https://github.com/HamadSH1001/Blockchain-transaction-analysis.git
+    cd Blockchain-transaction-analysis
     ```
 
 2. Create and activate a virtual environment (optional but recommended):
@@ -40,16 +40,4 @@ A project for analyzing blockchain transactions to evaluate the efficiency, secu
     ```sh
     pip install -r requirements.txt
     ```
-
-### Usage
-
-1. Place your transaction data in the `data/` directory.
-2. Run the analysis script:
-    ```sh
-    python analyze_transactions.py
-    ```
-3. View the results in the `output/` directory.
-
-## Project Structure
-
-
+### You can find the source code here : bta_ethereumrF/utils/FinalCode.py
