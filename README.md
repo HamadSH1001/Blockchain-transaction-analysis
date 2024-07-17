@@ -42,4 +42,5 @@ A project for analyzing blockchain transactions to evaluate the efficiency, secu
     ```
 ### You can find the source code here : [bta_ethereumrF/utils/FinalCode.py](bta_ethereumrF/utils/FinalCode.py)
 ### and you can see how the code the visualize the output here [bta_ethereumrF/Output.png](bta_ethereumrF/Output.png)
-### and you can see how the good explaination of how the project is working here(you should download the video ) [bta_ethereumrF/Video.mp4](bta_ethereumrF/Video.mp4)
+### and you can see a good explaination of how the project is working here (you should download the video) 
+### [bta_ethereumrF/Video.mp4](bta_ethereumrF/Video.mp4)
