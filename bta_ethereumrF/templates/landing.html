@@ -1,0 +1,82 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
+  <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
+    <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+      <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white" href="/">BTA</a>
+      <button class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none" type="button" onclick="toggleNavbar('example-collapse-navbar')">
+        <i class="text-white fas fa-bars"></i>
+      </button>
+    </div>
+    <div class="lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none hidden" id="example-collapse-navbar">
+      <ul class="flex flex-col lg:flex-row list-none lg:ml-auto items-center">
+        <li class="flex items-center">
+          <a class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold" href="#">
+            <span class="inline-block ml-2">Welcome {{request.user.username}}</span>
+          </a>
+        </li>
+        <li class="flex items-center">
+          <form action="{% url 'account_logout' %}">
+            <button class="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150" type="submit">
+              <!-- <i class="fas fa-arrow-alt-circle-down"></i> -->
+              Logout
+            </button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<main>
+  <div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+    <div class="absolute top-0 w-full h-full bg-center bg-cover">
+      <span id="blackOverlay" class="w-full h-full absolute opacity-75 bg-black"></span>
+    </div>
+    <div class="container relative mx-auto">
+      <div class="items-center flex flex-wrap">
+        <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+          <div class="md:pr-12">
+            <h1 class="text-white font-semibold text-5xl">Search Your Public ETH Address</h1>
+            <form action="{% url 'view-graph' %}" class="mt-6">
+              <div class="relative w-full mb-3">
+                <input type="text" name="address" max="45" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Address" required />
+              </div>
+              <div class="text-center mt-6">
+                <button class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150" type="submit">Search</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
+      <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+        <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </div>
+</main>
+<br />
+<br />
+<br />
+<br />
+<footer class="relative bg-blueGray-200 pt-8 pb-6">
+  <div class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20" style="transform: translateZ(0)">
+    <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+      <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+  <div class="container mx-auto px-4">
+    <hr class="my-6 border-blueGray-300" />
+    <div class="flex flex-wrap items-center md:justify-between justify-center">
+      <div class="w-full md:w-4/12 px-4 mx-auto text-center">
+        <div class="text-sm text-blueGray-500 font-semibold py-1">
+          Copyright ©
+          <span id="get-current-year"></span>
+          All rights reserved.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock %}

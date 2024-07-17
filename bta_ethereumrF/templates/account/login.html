@@ -1,0 +1,38 @@
+{% extends 'account_base.html' %} {% load static %} {% block title %}Register{% endblock%} {% block account_base %}
+<div class="w-full lg:w-4/12 px-4">
+  <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
+    <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+      {% if form.errors %}
+      <div class="alert alert-primary" role="alert">{{form.errors}}</div>
+      {% endif %}
+      <form method="post">
+        {% csrf_token %}
+        <br />
+        <br />
+        <div class="relative w-full mb-3">
+          <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">Username</label>
+          <input type="text" name="login" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Username" />
+        </div>
+        <div class="relative w-full mb-3">
+          <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">Password</label>
+          <input type="password" name="password" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Password" />
+        </div>
+        <div>
+          <label class="inline-flex items-center cursor-pointer">
+            <input name="remember" id="customCheckLogin" type="checkbox" class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150" />
+            <span class="ml-2 text-sm font-semibold text-blueGray-600">Remember me</span>
+          </label>
+        </div>
+        <div class="text-center mt-6">
+          <button class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150" type="submit">Sign In</button>
+        </div>
+        <div class="text-center mt-6">
+          <div class="w-full flex">
+            <div class="w-full cf-turnstile" data-sitekey="0x4AAAAAAASsvh5ohclxt-Er" data-theme="light"></div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

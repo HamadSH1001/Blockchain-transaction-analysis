@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
+  <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
+    <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+      <a class="text-xl font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white" href="/" id="bta">BTA</a>
+    </div>
+    <div class="lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none hidden" id="example-collapse-navbar"></div>
+  </div>
+</nav>
+<section class="header relative pt-16 items-center flex h-screen max-h-860-px">
+  <div class="absolute top-0 w-full h-full bg-center bg-cover" style="z-index: -99">
+    <span id="blackOverlay" class="w-full h-full absolute opacity-75 bg-black" style="background: black;opacity: 0.75"></span>
+  </div>
+  <div class="container mx-auto items-center flex flex-wrap">
+    <div class="w-full md:w-8/12 lg:w-6/12 xl:w-6/12 px-4">
+      <div class="pt-32 sm:pt-0">
+        <h2 class="font-semibold text-4xl text-white">See Where Your Ether Goes: Track Ethereum Address Activity with Ease</h2>
+        <p class="mt-4 text-lg leading-relaxed text-white">Gain transparency into your Ethereum holdings. Simply enter an address and visualize its transaction history.</p>
+        <div class="mt-12">
+          <a href="{% url 'account_login' %}" style="background-color: orangered" class="get-started text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-pink-500 active:bg-pink-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
+            Login
+          </a>
+          <a href="{% url 'account_signup' %}" style="background-color: orangered" class="github-star ml-1 text-white font-bold px-6 py-4 rounded outline-none focus:outline-none mr-1 mb-1 bg-blueGray-700 active:bg-blueGray-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
+            Register
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img class="absolute top-0 b-auto right-0 pt-16 sm:w-6/12 -mt-48 sm:mt-0 w-10/12 max-h-860-px" src="{% static 'assets/img/pattern_react.png' %}" alt="..." />
+  <!-- <img class="absolute top-0 b-auto right-0 pt-16 sm:w-6/12 -mt-48 sm:mt-0 w-10/12 max-h-860-px" src="{% static 'assets/img/ill_header_3.png' %}" alt="..." /> -->
+  <br />
+  <br />
+  <br />
+  <br />
+</section>
+<footer class="relative bg-blueGray-200 pt-8 pb-6">
+  <div class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20" style="transform: translateZ(0)">
+    <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+      <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+  <div class="container mx-auto px-4">
+    <hr class="my-6 border-blueGray-300" />
+    <div class="flex flex-wrap items-center md:justify-between justify-center">
+      <div class="w-full md:w-4/12 px-4 mx-auto text-center">
+        <div class="text-sm text-blueGray-500 font-semibold py-1">
+          Copyright ©
+          <span id="get-current-year"></span>
+          All rights reserved.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock %}

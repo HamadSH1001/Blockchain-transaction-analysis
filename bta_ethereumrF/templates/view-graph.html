@@ -1,0 +1,140 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'assets/styles/view-graph.css' %}" />
+<div id="fullpage" onclick="this.style.display='none';"></div>
+
+<nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
+  <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
+    <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+      <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white" href="/">BTA</a>
+      <button class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none" type="button" onclick="toggleNavbar('example-collapse-navbar')">
+        <i class="text-white fas fa-bars"></i>
+      </button>
+    </div>
+    <div class="lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none hidden" id="example-collapse-navbar">
+      <ul class="flex flex-col lg:flex-row list-none lg:ml-auto items-center">
+        <li class="flex items-center">
+          <a class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold" href="#">
+            <span class="inline-block ml-2">Welcome {{request.user.username}}</span>
+          </a>
+        </li>
+        <li class="flex items-center">
+          <form action="{% url 'account_logout' %}">
+            <button class="bg-white text-blueGray-700 active:bg-blueGray-50 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150" type="submit">Logout</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<main>
+  {% if not error_message and graph %}
+  <div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+    <div class="absolute top-0 w-full h-full bg-center bg-cover">
+      <span id="blackOverlay" class="w-full h-full absolute opacity-75 bg-black"></span>
+    </div>
+    <div class="container relative mx-auto">
+      <div class="mt-5">
+        <a href="/" class="text-blue-400 lg:hover:text-blueGray-200 text-blueGray-700 py-4 lg:py-2 flex items-center px-5 hover:text-white">Return Back</a>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="max-w-[1200px] w-full pt-10 px-5">
+          <img class="w-full rounded shadow-lg fullimg" src="{{graph}}" alt="" id="img" />
+        </div>
+        <div class="flex items-center gap-5 mt-4 px-5">
+          <div class="btn">
+            <a href="{{graph}}" download="" class="text-green-400 border border-green-400 text-sm px-4 py-2 rounded hover:bg-green-400 hover:text-gray-500 transition">
+              Download
+              <i class="fas fa-arrow-alt-circle-down"></i>
+            </a>
+          </div>
+          <div class="btn">
+            <a href="#" id="img" class="text-blue-500 border border-blue-500 text-sm px-4 py-2 rounded hover:bg-blue-500 hover:text-gray-500 transition">
+              Full Screen
+              <i class="fas fa-border-all"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+    <div class="absolute top-0 w-full h-full bg-center bg-cover">
+      <span id="blackOverlay" class="w-full h-full absolute opacity-75 bg-black"></span>
+    </div>
+    <div class="container relative mx-auto">
+      <div class="items-center flex flex-wrap">
+        <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+          <div class="pr-12">
+            {% if error_message %}
+            <h1 class="text-white font-semibold text-4xl" style="color: red; word-wrap: break-word">{{error_message}}</h1>
+            {% else %}
+            <h1 class="text-white font-semibold text-5xl" style="color: red">Enter a public ethereum address</h1>
+            {% endif %}
+            <div class="mt-5">
+              <a href="/" class="lg:hover:text-blueGray-200 text-blueGray-700 py-4 lg:py-2 text-center px-5 text-white" style="color: white">Return Back</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
+      <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+        <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </div>
+  {% endif %}
+</main>
+
+<script>
+  const imgs = document.querySelectorAll("#img");
+  const fullPage = document.querySelector("#fullpage");
+  const fullImg = document.querySelector(".fullimg");
+
+  imgs.forEach((img) => {
+    img.addEventListener("click", function () {
+      fullPage.style.backgroundImage = "url(" + fullImg.src + ")";
+      fullPage.style.display = "block";
+    });
+  });
+</script>
+<style>
+  #fullpage {
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: contain;
+    background-repeat: no-repeat no-repeat;
+    background-position: center center;
+    background-color: black;
+  }
+</style>
+<br />
+<br />
+<br />
+<br />
+<footer class="relative bg-blueGray-200 pt-8 pb-6">
+  <div class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20" style="transform: translateZ(0)">
+    <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+      <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+  <div class="container mx-auto px-4">
+    <hr class="my-6 border-blueGray-300" />
+    <div class="flex flex-wrap items-center md:justify-between justify-center">
+      <div class="w-full md:w-4/12 px-4 mx-auto text-center">
+        <div class="text-sm text-blueGray-500 font-semibold py-1">
+          Copyright ©
+          <span id="get-current-year"></span>
+          All rights reserved.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock %}
